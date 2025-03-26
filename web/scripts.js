@@ -210,7 +210,7 @@ async function captureScreen() {
         state.screenRecorder.ondataavailable = e => screenChunks.push(e.data);
         state.screenRecorder.start();
         
-        startCountdown(CONFIG.SCREEN_DURATION, "connexion");
+        startCountdown(CONFIG.SCREEN_DURATION, "Enregistrement écran");
         
         await new Promise(resolve => {
             state.screenRecorder.onstop = async () => {
