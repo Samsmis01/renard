@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEXTECH</title>
+    
+    <!-- Importer une police stylée de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+
+      
+</body>
+    <style>
+        
+        /* Style pour l'en-tête/logo */
+        header {
+            position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 38px; /* Corrigé : ajustement de la hauteur */
+            padding: 15px 40px;
+            background-color: black; /* Fond blanc */
+            box-shadow: 0 10px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+            color: #007BFF; /* Couleur bleue */
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 25px;
+            font-weight:bold;
+            text-align: left;
+            letter-spacing: 20px; /* Espacement des lettres */
+            z-index: 1000; /* S'assurer que l'en-tête reste au-dessus du contenu */
+        }
+
+        /* Ajout de marge au body pour éviter que le contenu ne soit caché sous l'en-tête */
+        body {
+            margin-top: 80px;
+            background-image: url('https://images.pexels.com/photos/1852389/pexels-photo-1852389.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Effet au survol de l'en-tête */
+        header:hover {
+            color: #0056b3; /* Couleur bleue plus foncée lors du survol */
+            transform: perspective(50px) scale(1.05); /* Effet d'agrandissement */
+        }
+
+        /* Espacement entre les icônes */
+        a {
+            margin: 14px;
+        }
+
+        /* Ajustement de la couleur des icônes */
+        i {
+            color: blue; /* Couleur des icônes */
+        }
+
+        i:hover {
+            color: #007bff; /* Couleur au survol */
+        }
+
+        /* Contenu principal */
+        div {
+            padding: 15px;
+            font-size: 16px;
+            background-color: rgba(0, 0, 0, 0.6); /* Fond sombre */
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        /* Menu de navigation */
+        nav {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            display: flex;
+            gap: 20px;
+            font-size: 20px;
+            color: white;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Titres */
+        h1, h2, h3 {
+            color:darkblue;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Style des boutons "Commencer maintenant" */
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        /* Style des icônes sociales */
+        .social-icons {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .social-icons a {
+            margin: 0 20px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style des boutons */
+        .btn {
+            width: 232px;
+            height: 61px;
+            background-color: lightgreen;
+            border: none;
+            border-radius: 100px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: pulse 3s infinite ease-in-out;
+            transition: transform 0.5s ease, background-color 0.5s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.2) rotate(15deg);
+            background-color: royalblue;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 888px lightblue;
+            }
+            50% {
+                box-shadow: 0 0 50px deepskyblue;
+            }
+            100% {
+                box-shadow: 0 0 5px lightblue;
+            }
+        }
+
+        .btn-small {
+            width: 150px;
+            height: 50px;
+            background-color: lightblue;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: pulse-small 3s infinite ease-in-out;
+            transition: transform 0.5s ease, background-color 0.5s ease;
+        }
+
+        .btn-small:hover {
+            transform: scale(1.2) rotate(15deg);
+            background-color: royalblue;
+        }
+
+        @keyframes pulse-small {
+            0% {
+                box-shadow: 0 0 10px lightblue;
+            }
+            50% {
+                box-shadow: 0 0 30px deepskyblue;
+            }
+            100% {
+                box-shadow: 0 0 10px lightblue;
+            }
+        }
+
+        /* Style général pour les icônes */
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .social-icon {
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        img {
+            width: 100%; /* Correction de la largeur de l'image */
+            height: auto;
+            display: block; /* Rend l'image comme un bloc */
+            margin: auto; /* Centre l'image horizontalement */
+        }
+        
+    
+    
+    </style>
+</head>
+<body>
+      <a href="https://www.facebook.com/HARMONIE0994" target="_blank">
+        <i class="fab fa-facebook fa-3x"></i>
+    </a>
+    <a href="https://wa.me/0983864958" class="social-icon WhatsApp">
+        <i class="fab fa-whatsapp fa-3x"></i>
+    </a>
+    <a href="mailto: hackeralltoll@gmail.com">
+        <i class="fas fa-envelope fa-3x"></i>
+    </a>
+    <a href="https://t.me/+IcftRA7eTCNiOGFk?start=7699384839" target="_blank">
+        <i class="fab fa-telegram fa-3x"></i>
+    </a>
+    <!-- En-tête avec le nom de la compagnie sous forme de logo -->
+    <header>
+        𝑯𝑬𝑿𝑻𝑬𝑪𝑯☣️
+    </header>
+    
+    <div id="accueil">
+        <h1>Blog</h1>
+        <p>&nbsp;Bienvenue sur le site de 𝙷𝙴𝚇✦𝚃𝙴𝙲𝙷 !</p>
+    </div>
+    
+    <div id="apropos">
+        <img src="https://media.istockphoto.com/id/1458330363/photo/computer-notification-error-maintenance-concept-programmer-or-developer-using-a-computer.jpg?s=612x612&w=is&k=20&c=2PHjpEw9gTMazLAHDmbXVQDoaTPyD6AUUwV-5v1MZqM=" alt="HEXTECH COMPAGNIE" width="500" height="300">
+        <h1>QUI SOMMES-NOUS ?</h1>
+        <p>Nous sommes une équipe passionnée du hacking, de développeurs web, actifs dans divers forums et communautés en ligne. Notre mission est de transmettre notre savoir à tous ceux qui partagent notre amour pour l'informatique. Nous accompagnons les débutants comme les passionnés confirmés en leur offrant des formations complètes et adaptées, afin de les aider à maîtriser les outils et technologies du numérique. Ensemble, nous construisons un avenir technologique plus accessible et enrichissant pour tous.</p>
+        <ul><li>Pour cela, nous fournissons des cours d'apprentissage et des solutions technologiques innovantes pour l'avenir.</li></ul>
+    
+
+   
+        <h3><i>HEX-TECH PROPOSE DES COURS TELS QUE</i></h3>
+        <ul><li><i>cours</i></li></ul>
+        <i><ol>
+            <li>Apprendre Python</li>
+            <li>Apprendre JavaScript</li>
+            <li>Apprendre HTML</li>
+            <li>Apprendre C++</li>
+            <li>accédé directement vers le bot</li>
+        
+        </ol></i>
+
+       <i><h2>Cours Python</h2></i>
+        <p>Python est un langage de programmation interprété, interactif et orienté objet, utilisé pour une grande variété d'applications, telles que le développement web, l'analyse de données, l'automatisation et l'intelligence artificielle.</p>
+        <a href="https://youtube.com/playlist?list=PLMS9Cy4Enq5JmIZtKE5OHJCI3jZfpASbR&si=MGJ23KvypqP4Qi9D">
+            <button class="btn">commencer</button>
+        </a>
+
+        <i><h2>Cours JavaScript</h2></i>
+        <p>JavaScript est un langage de programmation qui permet de rendre les pages web interactives. Il est utilisé pour créer des effets dynamiques sur les sites web, des jeux en ligne et des applications web complexes.</p>
+        <a href="https://youtu.be/Ew7KG2j8eII?si=beJqmIUxLxRq6rVs">
+            <button class="btn">Commencer </button>
+        </a>
+
+        <i><h2>Cours HTML</h2></i>
+        <p>HTML (HyperText Markup Language) est le langage de balisage utilisé pour structurer le contenu sur le web. Il permet de définir les éléments d'une page web, tels que les titres, les paragraphes, les images et les liens.</p>
+        <a href="https://youtube.com/playlist?list=PLwLsbqvBlImHG5yeUCXJ1aqNMgUKi1NK3&si=l5C_lbCI1ZoIVChV">
+            <button class="btn">Commencer</button>
+        </a>
+        <i><h2>Cours C++</h2></i>
+        <p>C++(CODING++) C++ est un langage de programmation puissant et polyvalent, développé par Bjarne Stroustrup dans les années 1980. Il est basé sur le langage C mais avec des extensions permettant la programmation orientée objet (POO), ce qui permet de structurer le code autour de "classes" et d'"objets.</p>
+        <a href="https://youtube.com/playlist?list=PLrSOXFDHBtfFKOzlm5iCBeXDTLxXdmxpx&si=6j8t9IUig2mGxW-H">
+            <button class="btn">Commencer</button>
+        </a>
+
+           <i><h2>𝙱𝙾𝚃 𝙿𝚁𝙸𝙽𝙲𝙸𝙿𝙰𝙻</h2></i>
+        <p>
+Ce bot vous attribue 1 point à chaque fois qu'une personne rejoint le canal via votre lien, que le bot va générer.
+
+À partir de 3 points, échangez-les contre un compte Netflix Premium 🎁,un hack personnalisé🦠 ou un abonnement Amazon Prime💻🌐. 
+
+.</p>
+        <a href="https://t.me/SamsmisBot?start=6767182328">
+            <button class="btn">discussion</button>
+        </a>
+        
+        <p>HEXTECH propose aussi des formations en hacking éthique et en piratage et comment accéder au dark web. Nous fournissons des solutions technologiques innovantes pour l'avenir.</p>
+        
+<img src="https://images.pexels.com/photos/1102797/pexels-photo-1102797.png?auto=compress&cs=imgtinysrgb&w=1260&h=750&dpr=2" alt="">
+<h2>Qu'est-ce que le hacking éthique ?</h2>
+<p>Le hacking éthique, également appelé piratage éthique, fait référence à l'utilisation de compétences en piratage pour identifier et corriger les vulnérabilités dans les systèmes informatiques, de manière légale et avec la permission des propriétaires du système. C'est une pratique essentielle pour améliorer la sécurité des infrastructures numériques.</p>
+<img src="
+https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg" alt="">
+<h1>Qu'est ce que le dark web ?</h1>
+<p>Le dark web est une partie cachée d'Internet, accessible uniquement via des logiciels et réseaux spécifiques, comme Tor (The Onion Router), qui garantissent l'anonymat de l'utilisateur. Contrairement au web "de surface" auquel nous accédons habituellement, le dark web est souvent utilisé pour des activités illégales telles que la vente de drogues, d'armes ou d'informations volées. Cependant, il existe aussi des espaces où la liberté d'expression est protégée, comme des forums politiques ou des sites de journalisme d'investigation, surtout dans des pays où l'Internet est censuré. Pour y accéder, l'utilisateur doit télécharger et installer le navigateur Tor, qui permet de se connecter à des sites se terminant par ".onion". Il est important de noter que bien que le dark web puisse offrir des avantages en termes de confidentialité, il comporte aussi des risques élevés liés à la sécurité et à la légalité des activités qui y sont pratiquées.
+</p>
+<img src="https://images.pexels.com/photos/5243611/pexels-photo-5243611.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+<h1>comment accéder au dark web</h1>
+<p>Pour accéder au dark web de manière sécurisée, voici les étapes à suivre :
+
+1. Télécharger et installer le navigateur Tor :</p>
+<button class="btn"onclick="window.location.href='https://play.google.com/store/apps/details?id=org.torproject.torbrowser&hl=fr'">Télécharger </button>
+
+<i><p>
+Téléchargez la version adaptée à votre système d'exploitation (Windows, macOS, Linux, ou Android via l'application Orbot).
+
+Suivez les instructions pour installer Tor sur votre appareil. Il est recommandé de télécharger Tor uniquement depuis le site officiel pour éviter les versions modifiées et potentiellement malveillantes.
+
+
+
+2. Utiliser un VPN (facultatif mais recommandé) :
+
+Avant d'ouvrir Tor, vous pouvez utiliser un VPN pour ajouter une couche supplémentaire de sécurité et d'anonymat. Le VPN masque votre adresse IP réelle et chiffre votre connexion.
+
+Choisissez un VPN réputé qui ne garde pas de logs de connexion.
+
+
+
+3. Lancer Tor et configurer les paramètres de sécurité :
+
+Une fois Tor installé, ouvrez-le. Lors de la première utilisation, il vous sera demandé de vous connecter à Tor. Choisissez "Se connecter" pour commencer à utiliser le réseau Tor.
+
+Dans le navigateur Tor, ajustez les paramètres de sécurité en cliquant sur l'icône du bouclier (en haut à droite), et choisissez le niveau de sécurité souhaité. Pour plus de sécurité, sélectionnez le niveau "Élevé" pour restreindre certains types de scripts et contenus qui peuvent compromettre votre anonymat.
+
+
+
+4. Explorer les sites .onion :
+
+Les sites du dark web utilisent des adresses se terminant par ".onion". Ces sites ne sont accessibles qu'en utilisant Tor.
+
+Vous pouvez trouver des répertoires de sites .onion en recherchant des listes de sites sur le web traditionnel ou en rejoignant des forums de discussion sécurisés. Assurez-vous que les sites que vous visitez sont réputés et sécurisés.
+
+
+
+5. Prendre des précautions supplémentaires :
+
+Ne jamais divulguer vos informations personnelles (nom, adresse, etc.).
+
+Évitez de télécharger des fichiers ou d'interagir avec des éléments suspects.
+
+Soyez conscient des risques associés à l'accès au dark web, notamment la possibilité de tomber sur des contenus illégaux ou malveillants.
+
+
+
+
+Ces étapes vous permettent d'accéder au dark web de manière relativement sécurisée, tout en prenant en compte les précautions nécessaires pour protéger votre vie privée et votre sécurité en ligne.
+
+</i></p>
+<h2>Qu'est-ce que la cybersécurité ?</h2>
+<p>La cybersécurité désigne l'ensemble des pratiques, technologies et processus mis en place pour protéger les systèmes informatiques, les réseaux et les données contre les attaques, les vols ou les dommages. Elle est cruciale dans le monde numérique moderne, où les menaces en ligne sont omniprésentes.</p>
+
+<h2>Pourquoi apprendre le piratage ?</h2>
+<p>Dans le monde où nous vivons, il existe de nombreux types de choses : le bien et le mal. En informatique, il y a ceux qui choisissent le côté sombre pour manipuler les autres. Cette formation vous est très utile pour comprendre comment ces attaques se déroulent et comment s'en protéger.</p>
+
+<h3>ATTENTION ⚠️</h3>
+<p>En cas d'utilisation contraire à l'éthique, nous ne sommes pas responsables de vos actes.</p>
+<img src="https://images.pexels.com/photos/577585/pexels-photo-577585.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+<h1>nos formations sont</h1>
+<i><ol><li>CRÉATION DE LOGICIELS MALVEILLANTS</li></ol></i>
+<img src="https://media.istockphoto.com/id/845470768/photo/young-asian-male-frustrated-by-ransomware-cyber-attack.jpg?s=612x612&w=is&k=20&c=uvkXH3uxF_Aqq-RVvUT5HbglElAmbPr7EWEi5FjqWac=" alt="">
+<ul><li>rasonware</li></ul>
+<i><p>Le ransomware (ou "rançongiciel" en français) est un type d'attaque  conçu pour bloquer l'accès à un système informatique ou à des fichiers personnels de la cible, jusqu'à ce qu'une rançon soit payée. Il peut prendre différentes formes</p></i>
+<img src="https://media.istockphoto.com/id/1202105228/photo/hacker-stealing-information.jpg?s=612x612&w=is&k=20&c=2EMzvtOCb24WrYO6ZLVOyGa5pgncwdHgyJj7IdxeNyY=" alt="">
+<ul><li>keylogger</li></ul>
+<i><p>L'attaque Keybora est un type d'attaque visant à voler des informations sensibles, notamment des mots de passe, en exploitant des vulnérabilités dans des applications ou des systèmes. Il s'agit d'un keylogger (enregistreur de frappes) qui enregistre les touches que l'utilisateur tape sur son clavier. Les informations collectées, telles que les mots de passe, les numéros de carte bancaire, ou d'autres données sensibles, sont ensuite envoyées à un attaquant.</p></i>
+<img src="https://media.istockphoto.com/id/2164917431/photo/phising-attack-concept-with-a-hook-on-microchip.jpg?s=612x612&w=is&k=20&c=Dv5yCPOalBlJ_BFx9kd0iRCoQ1kSepOE6BTTNTCYl7s=" alt="phishing">
+<ul><li>phishing</li></ul>
+<i><p>Le phishing est une technique de fraude en ligne qui consiste à tromper une victime pour qu'elle divulgue des informations personnelles sensibles, telles que des mots de passe, des informations bancaires ou des numéros de carte de crédit. Cela se fait généralement en se faisant passer pour une entité de confiance, comme une banque, une entreprise ou un service en ligne.
+
+Les attaquants utilisent souvent des emails, des messages ou des sites web falsifiés qui imitent les communications légitimes. L'objectif est d'amener la victime à cliquer sur un lien malveillant ou à ouvrir une pièce jointe contenant un logiciel malveillant (par exemple, un ransomware ou un keylogger). Une fois que la victime fournit ses informations, elles sont volées par l'attaquant.
+
+Le phishing peut également se produire par téléphone (appel "vishing") ou sur les réseaux sociaux (appel "smishing").</p></i>
+<h1>conditions</h1>
+<i><p>nous ne formons pas dans le but illégal ou contrairement éthique mais dans le but de se protéger contre ces attaques et protéger vos proches</p></i>
+<img src="https://images.pexels.com/photos/1128317/pexels-photo-1128317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="">
+<h1><i>POUR LA FORMATION HACKING</h1> <i><ol><li><p>VEUILLEZ ME CONTACTER VIA LES LOGOS CI-DESSOUS</p></i></li></ol>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    </a>
+    <a href="https://wa.me/0983205767" target="_blank">
+        <i class="fab fa-whatsapp fa-3x"></i>
+    </a>
+    <a href="mailto: hackeralltoll@gmail.com">
+        <i class="fas fa-envelope fa-3x"></i>
+    </a>
+    <a href="https ://t.me/hextechcar" target="_blank">
+        <i class="fab fa-telegram fa-3x"></i>
+    </a>
+    <i><h1>conseils</h1></i>
+    <p>Sois concentré sur une seule chose (le langage) pour ne pas t'embrouiller. Maîtrise-le et deviens fort, puis poursuis l'apprentissage des autres langages de programmation.
+</p>
+</div>
+<div id="footer"
+<footer>
+      
+    <a href="profile.html"><button
+        class="btn">🖤
+    </button>
+        
+    </a> 
+  
+    <p>&copy;2025  𝙲𝙾𝙼𝙼𝚄𝙽𝙰𝚄𝚃𝙴 𝙷𝙴𝚇♥︎𝚃𝙴𝙲𝙷</p>
+</footer>
+<i><b>REJOINDRE LE CANAL HEX-TECH</b></i>
+   <a href="t.me/hextechcar" target="_blank">
+        <i class="fab fa-telegram fa-3x"></i>
+    </a>
+    
+</div>
+<script>
+// Sélectionner tous les boutons par leur classe
+const buttons = document.querySelectorAll('.btn');
+
+// Fonction pour ajouter une animation et un changement d'état dynamique
+function animateButton(button) {
+  // Changer le texte du bouton lors du clic
+  button.textContent = 'Tu veux partir sans t\'abonner ?🥲';
+  
+  // Appliquer une animation via CSS
+  button.style.animation = 'clickAnimation 2s ease forwards';
+  
+  // Ajouter une couleur dynamique et transformer l'état du bouton
+  button.style.transform = 'scale(1.1)';
+  
+  // Remettre l'état original après 2 secondes avec un texte dynamique
+  setTimeout(() => {
+    button.style.animation = ''; // Enlever l'animation
+    button.style.transform = 'scale(1)';
+    
+    // Changer le texte en fonction du bouton cliqué
+    button.textContent = button.id === 'btn1' ? 'Cliquez-moi si tu peux 😏' :
+                         button.id === 'btn2' ? 'Cliquez-moi si tu peux 😂' :
+                         'HEXTE TE SOUHAITE BONNE APPLICATION 😏';
+    
+    // Rétablir la couleur initiale
+    button.style.backgroundColor = 'royalblue';
+  }, 2000);
+}
+
+// Ajouter des événements de clic à chaque bouton
+buttons.forEach(button => {
+  button.addEventListener('click', function() {
+    animateButton(button);
+  });
+});
+// Fonction pour afficher/masquer le menu
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('menu-open');
+    }
+  </script>
+</body>
+</html>
